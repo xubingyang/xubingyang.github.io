@@ -21,9 +21,8 @@ body {
 }
 
 p {
-    font-size: 15px;
-    position:relative;
-    top: 10px;           
+    font-size: 16px;
+    position:relative;         
 }
 
 a {
@@ -44,6 +43,22 @@ a:visited {
     left: auto;
     right: 15%;
     bottom: 15%;
+    z-index: 10;
+    background-color: rgba(0,0,0,0.4);
+    color: #fff;
+    font-weight: lighter;
+}
+
+#link {
+    top:10px;
+}
+
+#more {
+    padding: 3px 30px;
+    position: absolute;
+    left: auto;
+    right: 15%;
+    bottom: 9%;
     z-index: 10;
     background-color: rgba(0,0,0,0.4);
     color: #fff;

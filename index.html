@@ -1,42 +1,74 @@
 <!DOCTYPE html>
-<html lang="zh-cmn-Hans"><!-- 普通话用规范汉字 -->
+<!-- 普通话用规范汉字 -->
+<html lang="zh-cmn-Hans">
     <head>
-        <meta charset="utf-8"><!-- HTML5规范下的网页字符集 -->
-        <meta http-equiv="x-ua-compatible" content="IE=edge,chrome=1"/><!-- 浏览器采取何种版本渲染当前页面 -->
-        <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0"/><!-- 移动端的窗口 -->
-        <meta name="author" content="Bingyang Xu, hi@xubingyang.com"><!-- 作者 -->
-        <meta name="description" content="徐秉阳的个人主页 | 溪流，高山，草地，林莽。苍穹之下随处可以安身。"><!-- 网站内容描述 -->
-        <meta name="keywords" content="小秉,徐秉阳,秉阳,xubingyang, xubingyang.com"><!-- 关键字 -->
-        <meta name="copyright" content="xubingyang.com"><!-- 版权 -->
-        <meta http-equiv="Cache-Control" content="no-siteapp"/><!--禁止百度Siteapp自动转码-->
+        <!-- HTML5规范下的网页字符集 -->
+        <meta charset="utf-8">
+        <!-- 浏览器采取何种版本渲染当前页面 -->
+        <meta http-equiv="x-ua-compatible" content="IE=edge,chrome=1" />
+        <!-- 移动端的窗口 -->
+        <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0" />
+        <!-- 作者 -->
+        <meta name="author" content="Bingyang Xu，hi@xubingyang.com">
+        <!-- 网站内容描述 -->
+        <meta name="description" content="徐秉阳 | 溪流，高山，草地，林莽。苍穹之下随处可以安身。">
+        <!-- 关键字 -->
+        <meta name="keywords" content="小秉,徐秉阳,秉阳,xubingyang, xubingyang.com">
+        <!-- 版权 -->
+        <meta name="copyright" content="xubingyang.com">
+        <!--禁止百度Siteapp自动转码-->
+        <meta http-equiv="Cache-Control" content="no-siteapp" />
         <!-- favicons 开始-->
         <link rel="apple-touch-icon" sizes="180x180" href="./favicons/apple-touch-icon.png">
         <link rel="icon" type="image/png" sizes="32x32" href="./favicons/favicon-32x32.png">
         <link rel="icon" type="image/png" sizes="16x16" href="./favicons/favicon-16x16.png">
         <link rel="manifest" href="./favicons/manifest.json">
         <link rel="mask-icon" href="./favicons/safari-pinned-tab.svg" color="#5bbad5">
-        <meta name="theme-color" content="#ffffff"><!-- favicons 结束-->
-
-        <script src="./non-rightclick.js"></script><!-- 禁用右键 -->
-        <script src="./theater.min.js"></script><!-- 字幕效果 -->
-        <script src="./googleanalytics.js"></script><!-- Google统计 -->
-        <link rel="stylesheet" href="./styles.css" type="text/css"/><!-- 全局css -->
-        
+        <meta name="theme-color" content="#ffffff">
+        <!-- favicons 结束-->
+        <!-- 禁用右键 -->
+        <script src="./non-rightclick.js"></script>
+        <!-- 字幕效果 -->
+        <script src="./theater.min.js"></script>
+        <!-- Google统计 -->
+        <script src="./googleanalytics.js"></script>
+        <!-- 全局css -->
+        <link rel="stylesheet" href="./styles.css" type="text/css"/>
         <title>徐秉阳的个人主页</title>
     </head>
     <body><!-- 内容只有一个div -->
-        <div id="main">
-            <div id="title"></div>
-            <div id="sentence1"></div>
-            <div id="sentence2"></div>
-            <script src="./home.js"></script><!-- 主内容 -->
-            <p>
-                |<a href="http://xubingyang.com/cn" target="_blank">简历</a>|&nbsp;
-                |<a href="http://blog.xubingyang.com/cn" target="_blank">博客</a>|&nbsp;
-                |<a href="http://travel.xubingyang.com/" target="_blank">足迹</a>|&nbsp;
-                |<a href="http://bingyang.quickconnect.to/" target="_blank">NAS</a>|
-            </p>
-        </div>
-    </body>
+    <div id="main">
+        <div id="title"></div>
+        <div id="sentence1"></div>
+        <div id="sentence2"></div>
+        <script src="./home.js"></script><!-- 主内容 -->
+        <p id="link">
+            |<a href="http://xubingyang.com/cn" target="_blank">简历</a>|&nbsp;
+            |<a href="http://blog.xubingyang.com/cn" target="_blank">博客</a>|&nbsp;
+            |<a href="http://travel.xubingyang.com/" target="_blank">足迹</a>|&nbsp;
+            |<a id="changetext" onClick="changeText(1)">更多</a>|
+        </p>
+    </div>
+    <div id="more" hidden>
+    <p>
+      |<a href="https://message.xubingyang.com" target="_blank">密信</a>|&nbsp;
+      |<a href="https://keynote.xubingyang.com" target="_blank">展示</a>|&nbsp;
+      |<a href="https://my.xubingyang.com" target="_blank">管理</a>|&nbsp;
+      |<a href="https://vpn.xubingyang.com" target="_blank">VPN</a>|
+    </p>
+  </div>
+    <script>
+        function changeText(idElement) {
+            let changetext = document.getElementById('changetext');
+            let showmore = document.getElementById('more');
+            if (changetext.innerHTML === '更多') {
+                changetext.innerHTML = '关闭';
+                showmore.style.display = 'block';
+            } else {
+                changetext.innerHTML = '更多';
+                showmore.style.display = 'none';
+            }
+        }
+    </script>
+</body>
 </html>
-
