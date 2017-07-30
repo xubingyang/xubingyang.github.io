@@ -54,11 +54,11 @@ a:visited {
 }
 
 #showmore {
-    padding: 6px 30px;
+    padding: 2px 30px;
     position: absolute;
     left: auto;
     right: 15%;
-    bottom: 4%;
+    bottom: 5%;
     z-index: 10;
     background-color: rgba(0,0,0,0.4);
     color: #fff;
@@ -82,4 +82,5 @@ a:visited {
     body {
         background-image: url(https://source.unsplash.com/random/1920x1080);
     }
+
 }
