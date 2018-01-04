@@ -22,7 +22,7 @@ body {
 
 p {
     font-size: 16px;
-    position:relative;         
+    position: relative;         
 }
 
 a {
@@ -38,7 +38,7 @@ a:visited {
 }
 
 #main {
-    padding: 10px 30px;
+    padding: 10px 20px;
     position: absolute;
     left: auto;
     right: 15%;
@@ -49,20 +49,16 @@ a:visited {
     font-weight: lighter;
 }
 
-#link {
-    top:10px;
+#basic {
+    top: 10px;
+}
+
+#changetext {
+    cursor: pointer;
 }
 
 #showmore {
-    padding: 2px 30px;
-    position: absolute;
-    left: auto;
-    right: 15%;
-    bottom: 5%;
-    z-index: 10;
-    background-color: rgba(0,0,0,0.4);
-    color: #fff;
-    font-weight: lighter;
+    display: none;
 }
 
 #title {
