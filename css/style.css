@@ -39,7 +39,7 @@ a:visited {
     text-decoration: none;
 }
 
-#main {
+.main {
     padding: 10px 20px;
     position: absolute;
     left: auto;

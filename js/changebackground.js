@@ -1,5 +1,5 @@
-main.addEventListener('click', (event) => {
-  event.preventDefault();
+contents.addEventListener('click', (e) => {
+  e.preventDefault();
   let width = Math.max(document.documentElement.clientWidth, window.innerWidth || 0);
   let imageURL = '';
   if (width > 768) {
