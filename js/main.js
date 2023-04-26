@@ -58,89 +58,93 @@ const changeText = () => {
 }
 
 /*
+ 读取页面图片前等待
+*/
+const removeLoader = async () => {
+  const preloader = document.querySelector('#preloader')
+  setTimeout(() => {
+    preloader.parentNode.removeChild(preloader)
+  }, 1000)
+}
+
+const restartLoader = async () => {
+  const preloader = `
+  <div class="loading" id="preloader">
+    <div class="loader">
+      <div class="loader-inner line-scale">
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+      </div>
+    </div>
+  </div>
+  `
+  const main = document.querySelector('#main')
+  main.style.zIndex = '100'
+  document.body.insertAdjacentHTML('afterbegin', preloader)
+}
+
+imagesLoaded(document.querySelector('body'), () => {
+  removeLoader()
+})
+
+/*
   1. 获取屏幕宽度
   2. 根据屏幕宽度获取图片
   3. 设置背景图片
   4. 监听屏幕旋转事件
   5. 监听点击事件 
 */
-const changebackground = async () => {
+const changebackground = async (event) => {
+  const main = document.querySelector('#main')
+  if (event) {
+    if (
+      event.target.id === 'title' ||
+      event.target.id === 'sentence1' ||
+      event.target.id === 'sentence2'
+    ) {
+      main.style.zIndex = '100'
+    } else {
+      main.style.zIndex = '0'
+    }
+  }
   let width = Math.max(
     document.documentElement.clientWidth,
     window.innerWidth || 0
   )
   let imageURL = ''
-  let client_id =
-    '6e3c5ffab97c94d538c5e7db541cad4a23d9759158e2afc71dc00a60cb0b04ee'
-  let baseurl = 'https://api.unsplash.com/photos/random'
-  let image
   if (width > 768) {
-    imageURL = `${baseurl}/?orientation=landscape&client_id=${client_id}`
+    imageURL = 'https://api-proxy.xubingyang.vercel.app/unsplash/landscape'
   } else {
-    imageURL = `${baseurl}/?orientation=portrait&client_id=${client_id}`
+    imageURL = 'https://api-proxy.xubingyang.vercel.app/unsplash/portrait'
   }
   const res = await fetch(imageURL)
   const data = await res.json()
-  image = data.urls.regular.replace('q=80', 'q=100') // 图片质量不压缩
-  document.body.style.backgroundImage = `url(${image})`
+  document.body.style.backgroundImage = `url(${data.urls.regular})`
 }
 
 // 默认加载背景
-changebackground()
+imagesLoaded(changebackground({ target: { id: 'body' } }))
 
 // 监听屏幕旋转
 window.addEventListener('orientationchange', (e) => {
   e.preventDefault()
-  changebackground()
+  imagesLoaded(changebackground(e))
+  restartLoader()
+  removeLoader()
 })
+
+// 监听屏幕宽度变化
+const mediaQuery = window.matchMedia('(max-width: 768px)')
+mediaQuery.addEventListener('change', changebackground())
 
 // 监听点击事件
 contents.addEventListener('click', (e) => {
   e.preventDefault()
-  changebackground()
+  imagesLoaded(changebackground(e))
 })
-
-/*
- 读取页面图片前等待
-*/
-const wait = (ms) => new Promise((resolve) => setTimeout(resolve, ms))
-
-const imagesLoaded = async (backgroundImage) => {
-  return new Promise((resolve) => {
-    const image = new Image()
-    image.onload = image.onerror = () => {
-      resolve()
-    }
-    image.src = backgroundImage.replace(/url\(['"]?([^'"]*)['"]?\)/g, '$1')
-  })
-}
-
-const main = async () => {
-  await wait(0) // 等待下一轮事件循环开始，确保 DOMContentLoaded 事件已经触发
-
-  let isReady = false
-  const preloader = document.getElementById('preloader')
-
-  await imagesLoaded(document.body.style.backgroundImage)
-
-  preloader.classList.remove('loading')
-  isReady = true
-  await wait(800)
-  preloader.parentNode.removeChild(preloader)
-
-  const holdReady = (value) => {
-    if (value === true && !isReady) {
-      return
-    } else if (value === false && isReady) {
-      return
-    }
-    isReady = value
-  }
-
-  holdReady(true)
-}
-
-document.addEventListener('DOMContentLoaded', main)
 
 /*
   禁止右键

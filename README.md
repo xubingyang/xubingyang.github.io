@@ -7,11 +7,13 @@
 * 非常基本的做了Responsive效果，屏幕宽度768px为界限。
 * HTML5规范下的网页字符集用的是UTF-8：```<meta charset="utf-8">```.
 * 全页面用的是大陆普通话用规范汉字：```<html lang="zh-cmn-Hans">```. 
+* 2023/04 Unsplash随机取图API更改，做了个[APIProxy](https://github.com/xubingyang/apiProxyServer)隐去了Public Key的前端调用。
 
 ### 关于用到的库
 1. TheaterJS - 用来做文字动态字幕效果。
 2. Unsplash - 利用Unsplash的简单API，来做背景图。
-3. imageloaded
+3. imageloaded - 判断图片是否加载完毕。
+
 
 ### 预览图
 ![网站预览图](./screensnap.png)
